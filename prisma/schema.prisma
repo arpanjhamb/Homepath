@@ -1,0 +1,208 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  buyer
+  account_executive
+  admin
+}
+
+enum OnboardingStatus {
+  not_started
+  in_progress
+  completed
+}
+
+enum JourneyStage {
+  getting_mortgage_ready
+  mortgage_approval_in_principle
+  property_search
+  offer_accepted
+  legal_conveyancing
+  survey_and_valuation
+  mortgage_drawdown
+  completion_and_keys
+}
+
+enum ChecklistItemStatus {
+  pending
+  in_progress
+  completed
+  not_applicable
+}
+
+enum ProviderCategory {
+  mortgage_broker
+  bank
+  solicitor
+  valuer
+  surveyor
+  snagger
+  home_insurance
+  mortgage_protection
+  flooring
+  mover
+  broadband_utilities
+}
+
+enum IntroductionStatus {
+  requested
+  sent
+  responded
+  completed
+  cancelled
+}
+
+enum PaymentStatus {
+  pending
+  completed
+  failed
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String?
+  passwordHash String
+  role         UserRole  @default(buyer)
+  image        String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  buyerProfile         BuyerProfile?
+  assignedBuyers       BuyerProfile[] @relation("AEAssignment")
+  introductionsHandled Introduction[] @relation("AEIntroduction")
+
+  @@map("users")
+}
+
+model BuyerProfile {
+  id               String           @id @default(cuid())
+  userId           String           @unique
+  user             User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  onboardingStatus OnboardingStatus @default(not_started)
+  phone            String?
+  budgetMin        Int?
+  budgetMax        Int?
+  depositAmount    Int?
+  hasAIP           Boolean          @default(false)
+  preferredCounties String[]
+  propertyTypes    String[]
+  minBedrooms      Int?
+  targetMoveDate   DateTime?
+  timeline         String?
+  isFirstTimeBuyer Boolean          @default(true)
+  htbAware         Boolean          @default(false)
+  currentStage     JourneyStage     @default(getting_mortgage_ready)
+  completedStages  JourneyStage[]
+  assignedAEId     String?
+  assignedAE       User?            @relation("AEAssignment", fields: [assignedAEId], references: [id])
+  completionFeePaid Boolean         @default(false)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  checklistItems ChecklistItem[]
+  introductions  Introduction[]
+  payments       Payment[]
+
+  @@map("buyer_profiles")
+}
+
+model ChecklistItem {
+  id             String              @id @default(cuid())
+  buyerProfileId String
+  buyerProfile   BuyerProfile        @relation(fields: [buyerProfileId], references: [id], onDelete: Cascade)
+  stage          JourneyStage
+  section        String
+  title          String
+  description    String
+  status         ChecklistItemStatus @default(pending)
+  sortOrder      Int
+  isRequired     Boolean             @default(true)
+  relatedCategory ProviderCategory?
+  completedAt    DateTime?
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+
+  @@index([buyerProfileId])
+  @@map("checklist_items")
+}
+
+model Provider {
+  id               String           @id @default(cuid())
+  name             String
+  category         ProviderCategory
+  description      String
+  shortBio         String
+  logoUrl          String?
+  website          String?
+  email            String?
+  phone            String?
+  counties         String[]
+  nationalCoverage Boolean          @default(false)
+  featured         Boolean          @default(false)
+  isActive         Boolean          @default(true)
+  sortOrder        Int              @default(0)
+  commissionRate   Float?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  introductions Introduction[]
+
+  @@index([category, isActive])
+  @@map("providers")
+}
+
+model Introduction {
+  id             String             @id @default(cuid())
+  buyerProfileId String
+  buyerProfile   BuyerProfile       @relation(fields: [buyerProfileId], references: [id])
+  providerId     String
+  provider       Provider           @relation(fields: [providerId], references: [id])
+  status         IntroductionStatus @default(requested)
+  handledByAEId  String?
+  handledByAE    User?              @relation("AEIntroduction", fields: [handledByAEId], references: [id])
+  buyerNote      String?
+  aeNote         String?
+  requestedAt    DateTime           @default(now())
+  sentAt         DateTime?
+  completedAt    DateTime?
+  commission     Commission?
+
+  @@unique([buyerProfileId, providerId])
+  @@map("introductions")
+}
+
+model Commission {
+  id             String       @id @default(cuid())
+  introductionId String       @unique
+  introduction   Introduction @relation(fields: [introductionId], references: [id])
+  amount         Float
+  rate           Float
+  status         String       @default("pending")
+  paidAt         DateTime?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@map("commissions")
+}
+
+model Payment {
+  id               String        @id @default(cuid())
+  buyerProfileId   String
+  buyerProfile     BuyerProfile  @relation(fields: [buyerProfileId], references: [id])
+  amount           Float         @default(100.00)
+  currency         String        @default("EUR")
+  status           PaymentStatus @default(pending)
+  paymentReference String?       @unique
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@map("payments")
+}

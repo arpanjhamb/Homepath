@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HomePath IE — Onboarding</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .chip-radio input[type="radio"] { display: none; }
+    .chip-radio input[type="radio"]:checked + label {
+      background-color: #166534;
+      color: #ffffff;
+      border-color: #166534;
+    }
+    .chip-radio label {
+      display: block;
+      cursor: pointer;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      padding: 0.625rem 1rem;
+      text-align: center;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #374151;
+      background-color: #ffffff;
+      transition: all 0.15s ease;
+    }
+    .chip-radio label:hover {
+      border-color: #166534;
+      color: #166534;
+    }
+    .chip-aip input[type="radio"] { display: none; }
+    .chip-aip input[type="radio"]:checked + label {
+      background-color: #166534;
+      color: #ffffff;
+      border-color: #166534;
+    }
+    .chip-aip label {
+      display: inline-block;
+      cursor: pointer;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #374151;
+      background-color: #ffffff;
+      transition: all 0.15s ease;
+    }
+    .chip-aip label:hover {
+      border-color: #166534;
+      color: #166534;
+    }
+    .aip-note { display: none; }
+    #aip-no:checked ~ .aip-note { display: flex; }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+  <!-- Top Bar -->
+  <header class="bg-white border-b border-slate-200 px-6 py-4">
+    <div class="max-w-3xl mx-auto flex items-center justify-between">
+      <span class="text-xl font-bold text-green-800 tracking-tight">HomePath IE 🏠</span>
+      <span class="text-sm font-medium text-slate-500">Step 2 of 6</span>
+    </div>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="bg-white border-b border-slate-100 px-6 py-0">
+    <div class="max-w-3xl mx-auto">
+      <div class="h-1.5 bg-slate-200 rounded-full overflow-hidden">
+        <div class="h-full bg-green-700 rounded-full transition-all duration-500" style="width: 33.33%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step Labels -->
+  <div class="bg-white border-b border-slate-200 px-6 py-3">
+    <div class="max-w-3xl mx-auto">
+      <ol class="flex items-center gap-0 text-xs font-medium overflow-x-auto">
+        <!-- About you -->
+        <li class="flex items-center gap-1 text-slate-400 shrink-0">
+          <span class="w-5 h-5 rounded-full bg-green-700 flex items-center justify-center text-white text-xs font-bold">✓</span>
+          <span>About you</span>
+        </li>
+        <li class="w-6 h-px bg-slate-200 mx-1 shrink-0"></li>
+        <!-- Budget — active -->
+        <li class="flex items-center gap-1 text-green-800 font-semibold shrink-0">
+          <span class="w-5 h-5 rounded-full bg-green-700 flex items-center justify-center text-white text-xs font-bold">2</span>
+          <span>Budget</span>
+        </li>
+        <li class="w-6 h-px bg-slate-200 mx-1 shrink-0"></li>
+        <!-- Location -->
+        <li class="flex items-center gap-1 text-slate-400 shrink-0">
+          <span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-xs font-bold">3</span>
+          <span>Location</span>
+        </li>
+        <li class="w-6 h-px bg-slate-200 mx-1 shrink-0"></li>
+        <!-- Property -->
+        <li class="flex items-center gap-1 text-slate-400 shrink-0">
+          <span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-xs font-bold">4</span>
+          <span>Property</span>
+        </li>
+        <li class="w-6 h-px bg-slate-200 mx-1 shrink-0"></li>
+        <!-- Timeline -->
+        <li class="flex items-center gap-1 text-slate-400 shrink-0">
+          <span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-xs font-bold">5</span>
+          <span>Timeline</span>
+        </li>
+        <li class="w-6 h-px bg-slate-200 mx-1 shrink-0"></li>
+        <!-- Review -->
+        <li class="flex items-center gap-1 text-slate-400 shrink-0">
+          <span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-xs font-bold">6</span>
+          <span>Review</span>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-3xl mx-auto px-4 py-10">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
+
+      <h1 class="text-2xl font-bold text-slate-900 mb-6">Budget</h1>
+
+      <!-- Question 1: Target Budget -->
+      <fieldset class="mb-6">
+        <legend class="block text-sm font-semibold text-slate-700 mb-3">What is your target budget?</legend>
+        <div class="grid grid-cols-2 gap-2.5">
+          <div class="chip-radio">
+            <input type="radio" name="budget" id="b1" value="150-200" />
+            <label for="b1">€150k – €200k</label>
+          </div>
+          <div class="chip-radio">
+            <input type="radio" name="budget" id="b2" value="200-250" />
+            <label for="b2">€200k – €250k</label>
+          </div>
+          <div class="chip-radio">
+            <input type="radio" name="budget" id="b3" value="250-350" checked />
+            <label for="b3">€250k – €350k</label>
+          </div>
+          <div class="chip-radio">
+            <input type="radio" name="budget" id="b4" value="350-450" />
+            <label for="b4">€350k – €450k</label>
+          </div>
+          <div class="chip-radio">
+            <input type="radio" name="budget" id="b5" value="450-600" />
+            <label for="b5">€450k – €600k</label>
+          </div>
+          <div class="chip-radio">
+            <input type="radio" name="budget" id="b6" value="600-800" />
+            <label for="b6">€600k – €800k</label>
+          </div>
+          <div class="chip-radio col-span-2">
+            <input type="radio" name="budget" id="b7" value="800+" />
+            <label for="b7">€800k+</label>
+          </div>
+        </div>
+        <p class="mt-2.5 text-xs text-slate-400">In Ireland, lenders typically offer up to 3.5× your gross salary.</p>
+      </fieldset>
+
+      <div class="border-t border-slate-100 my-6"></div>
+
+      <!-- Question 2: Deposit -->
+      <div class="mb-6">
+        <label for="deposit" class="block text-sm font-semibold text-slate-700 mb-2">Approximate deposit saved</label>
+        <div class="relative max-w-xs">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 font-medium text-sm">€</span>
+          <input
+            type="number"
+            id="deposit"
+            name="deposit"
+            value="30000"
+            class="w-full pl-7 pr-4 py-2.5 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+          />
+        </div>
+        <p class="mt-2 text-xs text-slate-400">First-time buyers typically need at least 10% deposit.</p>
+      </div>
+
+      <div class="border-t border-slate-100 my-6"></div>
+
+      <!-- Question 3: AIP -->
+      <fieldset class="mb-6">
+        <legend class="block text-sm font-semibold text-slate-700 mb-3">Do you have Approval in Principle (AIP)?</legend>
+        <div class="flex gap-3">
+          <div class="chip-aip">
+            <input type="radio" name="aip" id="aip-yes" value="yes" />
+            <label for="aip-yes">Yes, I have AIP</label>
+          </div>
+          <div class="chip-aip">
+            <input type="radio" name="aip" id="aip-no" value="no" checked />
+            <label for="aip-no">Not yet</label>
+          </div>
+        </div>
+
+        <!-- Info note — shown when "Not yet" is selected -->
+        <div id="aip-info-note" class="mt-4 flex items-start gap-3 bg-green-50 border border-green-200 rounded-xl p-4">
+          <div class="mt-0.5 w-5 h-5 rounded-full bg-green-700 flex items-center justify-center shrink-0">
+            <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20A10 10 0 0012 2z" />
+            </svg>
+          </div>
+          <p class="text-sm text-green-800">No problem — getting AIP is one of the first steps in your checklist.</p>
+        </div>
+      </fieldset>
+
+      <!-- Navigation Buttons -->
+      <div class="flex justify-between pt-4 border-t border-slate-100 mt-2">
+        <button
+          type="button"
+          class="px-5 py-2.5 text-sm font-semibold text-slate-700 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          class="px-6 py-2.5 text-sm font-semibold text-white bg-green-700 rounded-lg hover:bg-green-800 transition-colors shadow-sm"
+        >
+          Continue
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Show/hide AIP info note based on radio selection
+    const aipYes = document.getElementById('aip-yes');
+    const aipNo = document.getElementById('aip-no');
+    const aipNote = document.getElementById('aip-info-note');
+
+    function updateAipNote() {
+      if (aipNo.checked) {
+        aipNote.style.display = 'flex';
+      } else {
+        aipNote.style.display = 'none';
+      }
+    }
+
+    aipYes.addEventListener('change', updateAipNote);
+    aipNo.addEventListener('change', updateAipNote);
+    updateAipNote();
+  </script>
+</body>
+</html>

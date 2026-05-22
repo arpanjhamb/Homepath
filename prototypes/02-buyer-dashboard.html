@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — HomePath IE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #f8fafc; }
+    .sidebar-link { transition: all 0.15s ease; }
+    .sidebar-link:hover { background: #f0fdf4; color: #166534; }
+    .sidebar-link.active { background: #dcfce7; color: #166534; font-weight: 600; }
+    .journey-step { transition: all 0.2s ease; }
+    .stat-card { transition: transform 0.15s ease; }
+    .stat-card:hover { transform: translateY(-2px); }
+    .task-card { transition: all 0.15s ease; }
+    .task-card:hover { border-color: #86efac; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+  </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="w-64 bg-white border-r border-gray-100 flex flex-col min-h-screen fixed left-0 top-0 bottom-0 z-20 shadow-sm">
+    <!-- Logo -->
+    <div class="px-6 py-5 border-b border-gray-100">
+      <a href="#" class="flex items-center gap-2">
+        <span class="text-2xl">🏠</span>
+        <span class="text-lg font-bold text-green-800 tracking-tight">HomePath <span class="text-green-600">IE</span></span>
+      </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest px-3 mb-3">Menu</p>
+      <a href="#" class="sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm">
+        <span class="text-lg">🏠</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="#" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-600">
+        <span class="text-lg">✅</span>
+        <span>Checklist</span>
+        <span class="ml-auto bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full">5</span>
+      </a>
+      <a href="03-marketplace.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-600">
+        <span class="text-lg">🏪</span>
+        <span>Marketplace</span>
+      </a>
+      <a href="#" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-600">
+        <span class="text-lg">📋</span>
+        <span>My Introductions</span>
+        <span class="ml-auto bg-gray-100 text-gray-500 text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+      </a>
+      <a href="#" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-600">
+        <span class="text-lg">💳</span>
+        <span>Completion Fee</span>
+      </a>
+    </nav>
+
+    <!-- User Profile -->
+    <div class="px-4 pb-6 border-t border-gray-100 pt-4">
+      <div class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 cursor-pointer transition-colors">
+        <div class="w-9 h-9 rounded-full bg-green-800 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+          CÓ
+        </div>
+        <div class="min-w-0">
+          <div class="text-sm font-semibold text-gray-900 truncate">Ciarán O'Brien</div>
+          <a href="#" class="text-xs text-green-700 hover:text-green-600 font-medium">View profile</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="ml-64 flex-1 flex flex-col min-h-screen">
+
+    <!-- TOP BAR -->
+    <div class="bg-white border-b border-gray-100 px-8 py-4 flex items-center justify-between sticky top-0 z-10">
+      <div>
+        <h1 class="text-xl font-bold text-gray-900">Good morning, Ciarán 👋</h1>
+        <p class="text-sm text-gray-500 mt-0.5">Friday, 15 May 2026</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="relative p-2.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-xl transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-green-500 rounded-full"></span>
+        </button>
+        <div class="w-9 h-9 rounded-full bg-green-800 flex items-center justify-center text-white font-bold text-sm">CÓ</div>
+      </div>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <div class="flex-1 p-8 space-y-8 max-w-6xl w-full">
+
+      <!-- WELCOME BANNER -->
+      <div class="bg-gradient-to-r from-green-800 to-green-700 rounded-2xl px-8 py-6 flex items-center justify-between shadow-md">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-green-300 text-sm font-semibold uppercase tracking-wide">Journey started</span>
+          </div>
+          <h2 class="text-white text-xl font-bold">Your journey has started! 🎉</h2>
+          <p class="text-green-100 mt-1 text-sm">Complete your checklist to stay on track and get your keys faster.</p>
+        </div>
+        <div class="hidden md:flex items-center gap-3 flex-shrink-0">
+          <a href="#" class="bg-white text-green-800 text-sm font-bold px-5 py-2.5 rounded-xl hover:bg-green-50 transition-colors shadow-sm">View Checklist →</a>
+        </div>
+      </div>
+
+      <!-- JOURNEY PROGRESS TRACKER -->
+      <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h3 class="font-bold text-gray-900 text-base">Your Home-Buying Journey</h3>
+            <p class="text-sm text-gray-500 mt-0.5">Step 1 of 8 — Get Mortgage Ready</p>
+          </div>
+          <span class="text-xs font-semibold text-green-700 bg-green-50 border border-green-200 px-3 py-1.5 rounded-full">12% complete</span>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="relative mb-6">
+          <div class="h-2 bg-gray-100 rounded-full">
+            <div class="h-2 bg-green-600 rounded-full" style="width: 12%"></div>
+          </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="grid grid-cols-4 lg:grid-cols-8 gap-2">
+          <!-- Step 1 - Active -->
+          <div class="journey-step text-center">
+            <div class="w-9 h-9 mx-auto rounded-full bg-green-800 border-2 border-green-800 flex items-center justify-center text-white font-bold text-xs shadow-md shadow-green-200 mb-2">1</div>
+            <p class="text-xs font-semibold text-green-800 leading-tight">Get Mortgage Ready</p>
+          </div>
+          <!-- Step 2 -->
+          <div class="journey-step text-center">
+            <div class="w-9 h-9 mx-auto rounded-full bg-gray-100 border-2 border-gray-200 flex items-center justify-center text-gray-400 font-bold text-xs mb-2">2</div>
+            <p class="text-xs text-gray-400 leading-tight">Mortgage AIP</p>
+          </div>
+          <!-- Step 3 -->
+          <div class="journey-step text-center">
+            <div class="w-9 h-9 mx-auto rounded-full bg-gray-100 border-2 border-gray-200 flex items-center justify-center text-gray-400 font-bold text-xs mb-2">3</div>
+            <p class="text-xs text-gray-400 leading-tight">Property Search</p>
+          </div>
+          <!-- Step 4 -->
+          <div class="journey-step text-center">
+            <div class="w-9 h-9 mx-auto rounded-full bg-gray-100 border-2 border-gray-200 flex items-center justify-center text-gray-400 font-bold text-xs mb-2">4</div>
+            <p class="text-xs text-gray-400 leading-tight">Offer Accepted</p>
+          </div>
+          <!-- Step 5 -->
+          <div class="journey-step text-center">
+            <div class="w-9 h-9 mx-auto rounded-full bg-gray-100 border-2 border-gray-200 flex items-center justify-center text-gray-400 font-bold text-xs mb-2">5</div>
+            <p class="text-xs text-gray-400 leading-tight">Legal & Contracts</p>
+          </div>
+          <!-- Step 6 -->
+          <div class="journey-step text-center">
+            <div class="w-9 h-9 mx-auto rounded-full bg-gray-100 border-2 border-gray-200 flex items-center justify-center text-gray-400 font-bold text-xs mb-2">6</div>
+            <p class="text-xs text-gray-400 leading-tight">Survey & Valuation</p>
+          </div>
+          <!-- Step 7 -->
+          <div class="journey-step text-center">
+            <div class="w-9 h-9 mx-auto rounded-full bg-gray-100 border-2 border-gray-200 flex items-center justify-center text-gray-400 font-bold text-xs mb-2">7</div>
+            <p class="text-xs text-gray-400 leading-tight">Mortgage Drawdown</p>
+          </div>
+          <!-- Step 8 -->
+          <div class="journey-step text-center">
+            <div class="w-9 h-9 mx-auto rounded-full bg-gray-100 border-2 border-gray-200 flex items-center justify-center text-gray-400 font-bold text-xs mb-2">8</div>
+            <p class="text-xs text-gray-400 leading-tight">Completion & Keys</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAT CARDS -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- Tasks remaining -->
+        <div class="stat-card bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-xl">📝</div>
+            <span class="text-xs font-semibold text-amber-600 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full">In progress</span>
+          </div>
+          <div class="text-3xl font-extrabold text-gray-900 mb-1">5</div>
+          <div class="text-sm font-medium text-gray-500">Tasks remaining</div>
+          <a href="#" class="text-xs text-green-700 font-semibold hover:text-green-600 mt-3 inline-block">View checklist →</a>
+        </div>
+
+        <!-- Providers saved -->
+        <div class="stat-card bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-xl">🏪</div>
+            <span class="text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full">Saved</span>
+          </div>
+          <div class="text-3xl font-extrabold text-gray-900 mb-1">2</div>
+          <div class="text-sm font-medium text-gray-500">Providers saved</div>
+          <a href="03-marketplace.html" class="text-xs text-green-700 font-semibold hover:text-green-600 mt-3 inline-block">Browse marketplace →</a>
+        </div>
+
+        <!-- Introductions sent -->
+        <div class="stat-card bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center text-xl">✉️</div>
+            <span class="text-xs font-semibold text-gray-500 bg-gray-50 border border-gray-200 px-2.5 py-1 rounded-full">None yet</span>
+          </div>
+          <div class="text-3xl font-extrabold text-gray-900 mb-1">0</div>
+          <div class="text-sm font-medium text-gray-500">Introductions sent</div>
+          <a href="03-marketplace.html" class="text-xs text-green-700 font-semibold hover:text-green-600 mt-3 inline-block">Request your first →</a>
+        </div>
+      </div>
+
+      <!-- NEXT ACTIONS + ACCOUNT EXECUTIVE (Side by side) -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- Next Actions -->
+        <div class="lg:col-span-2 bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 class="font-bold text-gray-900 text-base">Your next actions</h3>
+              <p class="text-sm text-gray-500 mt-0.5">Step 1: Get Mortgage Ready</p>
+            </div>
+            <a href="#" class="text-sm text-green-700 font-semibold hover:text-green-600">View all tasks →</a>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Task 1 - In Progress -->
+            <div class="task-card bg-green-50 border border-green-200 rounded-xl p-4 transition-colors">
+              <div class="flex items-start gap-4">
+                <div class="mt-0.5 w-6 h-6 rounded-full bg-green-600 flex items-center justify-center text-white flex-shrink-0">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 flex-wrap mb-1">
+                    <h4 class="font-semibold text-gray-900 text-sm">Calculate your borrowing capacity</h4>
+                    <span class="bg-green-200 text-green-800 text-xs font-bold px-2.5 py-0.5 rounded-full">In Progress</span>
+                  </div>
+                  <p class="text-sm text-gray-600">Use our borrowing calculator or speak with a mortgage broker to understand your maximum loan amount based on your income.</p>
+                  <a href="03-marketplace.html" class="text-xs text-green-700 font-semibold hover:text-green-600 mt-2 inline-block">View Mortgage Brokers in Marketplace →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Task 2 -->
+            <div class="task-card border border-gray-100 bg-white rounded-xl p-4 hover:border-green-200 transition-colors cursor-pointer">
+              <div class="flex items-start gap-4">
+                <div class="mt-0.5 w-6 h-6 rounded-full border-2 border-gray-300 flex-shrink-0 hover:border-green-500 transition-colors"></div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-1">
+                    <h4 class="font-semibold text-gray-900 text-sm">Check your credit report</h4>
+                    <span class="bg-gray-100 text-gray-500 text-xs font-medium px-2.5 py-0.5 rounded-full">To do</span>
+                  </div>
+                  <p class="text-sm text-gray-600">Request your free credit report from the Central Credit Register. Lenders will review this as part of your mortgage application.</p>
+                  <a href="https://www.centralcreditregister.ie" target="_blank" class="text-xs text-green-700 font-semibold hover:text-green-600 mt-2 inline-block">Visit centralcreditregister.ie →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Task 3 -->
+            <div class="task-card border border-gray-100 bg-white rounded-xl p-4 hover:border-green-200 transition-colors cursor-pointer">
+              <div class="flex items-start gap-4">
+                <div class="mt-0.5 w-6 h-6 rounded-full border-2 border-gray-300 flex-shrink-0 hover:border-green-500 transition-colors"></div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-1">
+                    <h4 class="font-semibold text-gray-900 text-sm">Choose a mortgage broker</h4>
+                    <span class="bg-gray-100 text-gray-500 text-xs font-medium px-2.5 py-0.5 rounded-full">To do</span>
+                  </div>
+                  <p class="text-sm text-gray-600">A good mortgage broker can compare deals across all Irish lenders and secure better rates than going direct. Most charge no upfront fees.</p>
+                  <a href="03-marketplace.html" class="text-xs text-green-700 font-semibold hover:text-green-600 mt-2 inline-block">View Mortgage Brokers in Marketplace →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account Executive Card -->
+        <div class="space-y-5">
+          <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <h3 class="font-bold text-gray-900 text-base mb-5">Your Account Executive</h3>
+            <div class="text-center">
+              <!-- Avatar -->
+              <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center text-white font-bold text-2xl mb-4 shadow-lg shadow-green-200">
+                SM
+              </div>
+              <h4 class="font-bold text-gray-900 text-base">Sarah Murphy</h4>
+              <p class="text-sm text-gray-500 mt-0.5">Account Executive at HomePath IE</p>
+              <a href="mailto:sarah.murphy@homepath.ie" class="text-xs text-green-700 font-semibold hover:text-green-600 mt-1.5 inline-block">sarah.murphy@homepath.ie</a>
+            </div>
+            <div class="mt-5 p-4 bg-green-50 rounded-xl border border-green-100">
+              <p class="text-sm text-gray-600 leading-relaxed text-center">Sarah is here to guide you through every step of the process. Don't hesitate to reach out with any questions.</p>
+            </div>
+            <div class="mt-4 space-y-2">
+              <button class="w-full bg-green-800 hover:bg-green-700 text-white font-semibold text-sm py-3 rounded-xl transition-colors">
+                Send a message
+              </button>
+              <button class="w-full border border-gray-200 hover:bg-gray-50 text-gray-700 font-semibold text-sm py-3 rounded-xl transition-colors">
+                Book a call
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick tip card -->
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5">
+            <div class="flex items-start gap-3">
+              <span class="text-xl">💡</span>
+              <div>
+                <h4 class="font-semibold text-amber-900 text-sm mb-1">First-time buyer tip</h4>
+                <p class="text-xs text-amber-800 leading-relaxed">Check if you're eligible for the Help to Buy scheme — you could get up to €30,000 back from Revenue toward your deposit.</p>
+                <a href="https://www.revenue.ie/en/property/help-to-buy-incentive/index.aspx" target="_blank" class="text-xs font-bold text-amber-700 hover:text-amber-600 mt-2 inline-block">Learn more at Revenue.ie →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

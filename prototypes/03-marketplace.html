@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketplace — HomePath IE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #f8fafc; }
+    .sidebar-link { transition: all 0.15s ease; }
+    .sidebar-link:hover { background: #f0fdf4; color: #166534; }
+    .sidebar-link.active { background: #dcfce7; color: #166534; font-weight: 600; }
+    .provider-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .provider-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.10); }
+    .tab-btn { transition: all 0.15s ease; }
+    .tab-btn.active { background: #166534; color: #fff; }
+    .tab-btn:not(.active):hover { background: #f0fdf4; color: #166534; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+  </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="w-64 bg-white border-r border-gray-100 flex flex-col min-h-screen fixed left-0 top-0 bottom-0 z-20 shadow-sm">
+    <!-- Logo -->
+    <div class="px-6 py-5 border-b border-gray-100">
+      <a href="01-landing.html" class="flex items-center gap-2">
+        <span class="text-2xl">🏠</span>
+        <span class="text-lg font-bold text-green-800 tracking-tight">HomePath <span class="text-green-600">IE</span></span>
+      </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest px-3 mb-3">Menu</p>
+      <a href="02-buyer-dashboard.html" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-600">
+        <span class="text-lg">🏠</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="#" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-600">
+        <span class="text-lg">✅</span>
+        <span>Checklist</span>
+        <span class="ml-auto bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full">5</span>
+      </a>
+      <a href="#" class="sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm">
+        <span class="text-lg">🏪</span>
+        <span>Marketplace</span>
+      </a>
+      <a href="#" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-600">
+        <span class="text-lg">📋</span>
+        <span>My Introductions</span>
+        <span class="ml-auto bg-gray-100 text-gray-500 text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+      </a>
+      <a href="#" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-600">
+        <span class="text-lg">💳</span>
+        <span>Completion Fee</span>
+      </a>
+    </nav>
+
+    <!-- User Profile -->
+    <div class="px-4 pb-6 border-t border-gray-100 pt-4">
+      <div class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 cursor-pointer transition-colors">
+        <div class="w-9 h-9 rounded-full bg-green-800 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+          CÓ
+        </div>
+        <div class="min-w-0">
+          <div class="text-sm font-semibold text-gray-900 truncate">Ciarán O'Brien</div>
+          <a href="#" class="text-xs text-green-700 hover:text-green-600 font-medium">View profile</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="ml-64 flex-1 flex flex-col min-h-screen">
+
+    <!-- TOP BAR -->
+    <div class="bg-white border-b border-gray-100 px-8 py-4 flex items-center justify-between sticky top-0 z-10">
+      <div>
+        <h1 class="text-xl font-bold text-gray-900">Provider Marketplace</h1>
+        <p class="text-sm text-gray-500 mt-0.5">Compare vetted providers across all categories of your home-buying journey.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="text" placeholder="Search providers..." class="pl-9 pr-4 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent w-56" />
+        </div>
+        <div class="w-9 h-9 rounded-full bg-green-800 flex items-center justify-center text-white font-bold text-sm">CÓ</div>
+      </div>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <div class="flex-1 p-8 space-y-6 max-w-6xl w-full">
+
+      <!-- DISCLAIMER BANNER -->
+      <div class="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 flex items-start gap-3">
+        <span class="text-amber-500 text-lg mt-0.5 flex-shrink-0">⚠️</span>
+        <p class="text-sm text-amber-800 leading-relaxed">
+          <span class="font-bold">Important:</span> HomePath IE provides introductions only — not financial, legal, or insurance advice. Always seek independent professional advice from a regulated professional before making any financial, legal, or insurance decisions in connection with your property purchase.
+        </p>
+      </div>
+
+      <!-- CATEGORY TABS -->
+      <div class="bg-white rounded-2xl border border-gray-100 p-2 shadow-sm inline-flex gap-1 flex-wrap">
+        <button onclick="filterCategory('all')" id="tab-all" class="tab-btn active text-sm font-semibold px-4 py-2 rounded-xl">All providers</button>
+        <button onclick="filterCategory('mortgage')" id="tab-mortgage" class="tab-btn text-sm font-medium text-gray-600 px-4 py-2 rounded-xl">🏦 Mortgage</button>
+        <button onclick="filterCategory('legal')" id="tab-legal" class="tab-btn text-sm font-medium text-gray-600 px-4 py-2 rounded-xl">⚖️ Legal</button>
+        <button onclick="filterCategory('property')" id="tab-property" class="tab-btn text-sm font-medium text-gray-600 px-4 py-2 rounded-xl">🔍 Property</button>
+        <button onclick="filterCategory('insurance')" id="tab-insurance" class="tab-btn text-sm font-medium text-gray-600 px-4 py-2 rounded-xl">🛡️ Insurance</button>
+        <button onclick="filterCategory('moving')" id="tab-moving" class="tab-btn text-sm font-medium text-gray-600 px-4 py-2 rounded-xl">🚚 Moving</button>
+      </div>
+
+      <!-- RESULTS COUNT -->
+      <div class="flex items-center justify-between">
+        <p class="text-sm text-gray-500" id="results-count">Showing <span class="font-semibold text-gray-900">4</span> providers</p>
+        <div class="flex items-center gap-2">
+          <label class="text-sm text-gray-500">Sort by:</label>
+          <select class="text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+            <option>Featured first</option>
+            <option>Name A–Z</option>
+            <option>Newest first</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- PROVIDER CARDS GRID -->
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5" id="providers-grid">
+
+        <!-- Provider 1: Doddl Mortgages -->
+        <div class="provider-card bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col" data-category="mortgage">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center text-2xl flex-shrink-0">
+              🏦
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="bg-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full border border-amber-200">⭐ Featured</span>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 flex-wrap mb-2">
+              <h3 class="font-bold text-gray-900 text-base">Doddl Mortgages</h3>
+            </div>
+            <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">Mortgage Broker</span>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">Ireland's largest online mortgage broker. Free comparison across all lenders with no upfront fees. Rated Excellent on Trustpilot with over 5,000 reviews.</p>
+            <div class="flex items-center gap-2 mb-5">
+              <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span class="text-xs text-gray-500 font-medium">National coverage</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-gray-100 flex items-center gap-3">
+            <button onclick="openModal('doddl')" class="flex-1 bg-green-800 hover:bg-green-700 text-white font-semibold text-sm py-2.5 px-4 rounded-xl transition-colors shadow-sm">
+              Request Introduction
+            </button>
+            <button class="text-sm text-green-700 font-semibold hover:text-green-600 px-2">View profile</button>
+          </div>
+        </div>
+
+        <!-- Provider 2: Haven Mortgages -->
+        <div class="provider-card bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col" data-category="mortgage">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-2xl flex-shrink-0">
+              🏛️
+            </div>
+            <div></div>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 flex-wrap mb-2">
+              <h3 class="font-bold text-gray-900 text-base">Haven Mortgages</h3>
+            </div>
+            <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">Bank</span>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">AIB's specialist mortgage arm. Competitive rates for first-time buyers with dedicated support throughout your application journey.</p>
+            <div class="flex items-center gap-2 mb-5">
+              <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span class="text-xs text-gray-500 font-medium">National coverage</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-gray-100 flex items-center gap-3">
+            <button onclick="openModal('haven')" class="flex-1 bg-green-800 hover:bg-green-700 text-white font-semibold text-sm py-2.5 px-4 rounded-xl transition-colors shadow-sm">
+              Request Introduction
+            </button>
+            <button class="text-sm text-green-700 font-semibold hover:text-green-600 px-2">View profile</button>
+          </div>
+        </div>
+
+        <!-- Provider 3: McCann FitzGerald -->
+        <div class="provider-card bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col" data-category="legal">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-2xl flex-shrink-0">
+              ⚖️
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="bg-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full border border-amber-200">⭐ Featured</span>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 flex-wrap mb-2">
+              <h3 class="font-bold text-gray-900 text-base">McCann FitzGerald</h3>
+            </div>
+            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">Solicitor</span>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">Leading Dublin conveyancing practice with over 30 years of experience. Specialist residential property team handling hundreds of transactions annually.</p>
+            <div class="flex items-center gap-2 mb-5">
+              <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span class="text-xs text-gray-500 font-medium">Dublin, Kildare, Wicklow, Meath</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-gray-100 flex items-center gap-3">
+            <button onclick="openModal('mccann')" class="flex-1 bg-green-800 hover:bg-green-700 text-white font-semibold text-sm py-2.5 px-4 rounded-xl transition-colors shadow-sm">
+              Request Introduction
+            </button>
+            <button class="text-sm text-green-700 font-semibold hover:text-green-600 px-2">View profile</button>
+          </div>
+        </div>
+
+        <!-- Provider 4: Surveyors Ireland -->
+        <div class="provider-card bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col" data-category="property">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-2xl flex-shrink-0">
+              🔍
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="bg-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full border border-amber-200">⭐ Featured</span>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 flex-wrap mb-2">
+              <h3 class="font-bold text-gray-900 text-base">Surveyors Ireland</h3>
+            </div>
+            <span class="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">Surveyor</span>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">Structural surveys and condition reports for all property types. SCSI-registered surveyors with fast turnaround and plain-English reports.</p>
+            <div class="flex items-center gap-2 mb-5">
+              <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span class="text-xs text-gray-500 font-medium">National coverage</span>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-gray-100 flex items-center gap-3">
+            <button onclick="openModal('surveyors')" class="flex-1 bg-green-800 hover:bg-green-700 text-white font-semibold text-sm py-2.5 px-4 rounded-xl transition-colors shadow-sm">
+              Request Introduction
+            </button>
+            <button class="text-sm text-green-700 font-semibold hover:text-green-600 px-2">View profile</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =========================================
+           REQUEST INTRODUCTION MODAL — shown inline
+           as a visible example for Doddl Mortgages
+           ========================================= -->
+      <div class="mt-10">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="h-px flex-1 bg-gray-200"></div>
+          <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest px-3">Example: Introduction Request Modal</span>
+          <div class="h-px flex-1 bg-gray-200"></div>
+        </div>
+
+        <!-- Modal card (shown inline as example) -->
+        <div class="max-w-lg mx-auto">
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden" id="inline-modal">
+            <!-- Modal header -->
+            <div class="bg-green-800 px-6 py-5">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-xl">🏦</div>
+                  <div>
+                    <h3 class="text-white font-bold text-lg">Request Introduction</h3>
+                    <p class="text-green-200 text-sm">Doddl Mortgages</p>
+                  </div>
+                </div>
+                <button class="text-white/60 hover:text-white/90 transition-colors">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Modal body -->
+            <div class="p-6">
+              <!-- Provider summary -->
+              <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100 mb-5">
+                <div class="text-2xl">🏦</div>
+                <div>
+                  <div class="font-bold text-gray-900 text-sm">Doddl Mortgages</div>
+                  <div class="text-xs text-gray-500">Mortgage Broker · National coverage</div>
+                </div>
+                <span class="ml-auto bg-amber-100 text-amber-700 text-xs font-bold px-2 py-1 rounded-full">⭐ Featured</span>
+              </div>
+
+              <!-- Disclaimer -->
+              <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-5">
+                <div class="flex items-start gap-2">
+                  <span class="text-amber-500 text-sm flex-shrink-0 mt-0.5">⚠️</span>
+                  <p class="text-xs text-amber-800 leading-relaxed">
+                    <span class="font-bold">Before you proceed:</span> HomePath IE is providing an introduction service only. We do not provide financial advice. Doddl Mortgages is regulated by the Central Bank of Ireland. You should always seek independent financial advice and read all terms and conditions before proceeding.
+                  </p>
+                </div>
+              </div>
+
+              <!-- What happens next -->
+              <div class="mb-5">
+                <h4 class="text-sm font-bold text-gray-900 mb-3">What happens next?</h4>
+                <div class="space-y-2.5">
+                  <div class="flex items-start gap-3 text-sm text-gray-600">
+                    <span class="w-6 h-6 rounded-full bg-green-100 text-green-700 font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                    <span>We'll send Doddl Mortgages your contact details and a note of introduction on your behalf.</span>
+                  </div>
+                  <div class="flex items-start gap-3 text-sm text-gray-600">
+                    <span class="w-6 h-6 rounded-full bg-green-100 text-green-700 font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                    <span>A member of their team will contact you directly, typically within 1 business day.</span>
+                  </div>
+                  <div class="flex items-start gap-3 text-sm text-gray-600">
+                    <span class="w-6 h-6 rounded-full bg-green-100 text-green-700 font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+                    <span>Your introduction will be logged in your HomePath IE dashboard under "My Introductions".</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Note textarea -->
+              <div class="mb-6">
+                <label class="text-sm font-semibold text-gray-800 block mb-2">Add a note <span class="text-gray-400 font-normal">(optional)</span></label>
+                <textarea rows="3" placeholder="e.g. I'm a first-time buyer looking to purchase a 3-bed in South Dublin. Pre-approval letter needed within 4–6 weeks..." class="w-full text-sm border border-gray-200 rounded-xl px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-700 placeholder-gray-400"></textarea>
+              </div>
+
+              <!-- Consent -->
+              <div class="flex items-start gap-3 mb-6">
+                <input type="checkbox" id="consent" class="mt-1 w-4 h-4 accent-green-700 cursor-pointer" />
+                <label for="consent" class="text-xs text-gray-600 leading-relaxed cursor-pointer">
+                  I understand that HomePath IE will share my name, email address, and this note with Doddl Mortgages for the purpose of this introduction. I have read the <a href="#" class="text-green-700 font-semibold underline">Privacy Policy</a>.
+                </label>
+              </div>
+
+              <!-- Action buttons -->
+              <div class="flex gap-3">
+                <button class="flex-1 border border-gray-200 text-gray-700 font-semibold text-sm py-3 rounded-xl hover:bg-gray-50 transition-colors">
+                  Cancel
+                </button>
+                <button class="flex-1 bg-green-800 hover:bg-green-700 text-white font-semibold text-sm py-3 rounded-xl transition-colors shadow-sm">
+                  Send Introduction Request
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- MODAL OVERLAY (for live modal demo) -->
+  <div id="modal-overlay" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl border border-gray-200 shadow-2xl overflow-hidden w-full max-w-lg max-h-screen overflow-y-auto" id="live-modal">
+      <!-- Modal header -->
+      <div class="bg-green-800 px-6 py-5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-xl" id="modal-icon">🏦</div>
+            <div>
+              <h3 class="text-white font-bold text-lg">Request Introduction</h3>
+              <p class="text-green-200 text-sm" id="modal-provider-name">Provider Name</p>
+            </div>
+          </div>
+          <button onclick="closeModal()" class="text-white/60 hover:text-white/90 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal body -->
+      <div class="p-6">
+        <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100 mb-5">
+          <div class="text-2xl" id="modal-icon-2">🏦</div>
+          <div>
+            <div class="font-bold text-gray-900 text-sm" id="modal-title-2">Provider Name</div>
+            <div class="text-xs text-gray-500" id="modal-meta">Category · Coverage</div>
+          </div>
+        </div>
+
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-5">
+          <div class="flex items-start gap-2">
+            <span class="text-amber-500 text-sm flex-shrink-0 mt-0.5">⚠️</span>
+            <p class="text-xs text-amber-800 leading-relaxed">
+              <span class="font-bold">Before you proceed:</span> HomePath IE provides an introduction service only — not financial, legal, or insurance advice. Always seek independent professional advice before making any decisions.
+            </p>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label class="text-sm font-semibold text-gray-800 block mb-2">Add a note <span class="text-gray-400 font-normal">(optional)</span></label>
+          <textarea rows="3" placeholder="Add any context to help the provider prepare for your conversation..." class="w-full text-sm border border-gray-200 rounded-xl px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-700 placeholder-gray-400"></textarea>
+        </div>
+
+        <div class="flex items-start gap-3 mb-6">
+          <input type="checkbox" id="live-consent" class="mt-1 w-4 h-4 accent-green-700 cursor-pointer" />
+          <label for="live-consent" class="text-xs text-gray-600 leading-relaxed cursor-pointer">
+            I understand that HomePath IE will share my contact details with this provider for the purpose of this introduction. I have read the <a href="#" class="text-green-700 font-semibold underline">Privacy Policy</a>.
+          </label>
+        </div>
+
+        <div class="flex gap-3">
+          <button onclick="closeModal()" class="flex-1 border border-gray-200 text-gray-700 font-semibold text-sm py-3 rounded-xl hover:bg-gray-50 transition-colors">
+            Cancel
+          </button>
+          <button onclick="sendIntro()" class="flex-1 bg-green-800 hover:bg-green-700 text-white font-semibold text-sm py-3 rounded-xl transition-colors shadow-sm">
+            Send Introduction Request
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Provider data
+    const providers = {
+      doddl: { name: 'Doddl Mortgages', icon: '🏦', category: 'Mortgage Broker', coverage: 'National coverage' },
+      haven: { name: 'Haven Mortgages', icon: '🏛️', category: 'Bank', coverage: 'National coverage' },
+      mccann: { name: 'McCann FitzGerald Solicitors', icon: '⚖️', category: 'Solicitor', coverage: 'Dublin, Kildare, Wicklow, Meath' },
+      surveyors: { name: 'Surveyors Ireland', icon: '🔍', category: 'Surveyor', coverage: 'National coverage' }
+    };
+
+    function openModal(id) {
+      const p = providers[id];
+      if (!p) return;
+      document.getElementById('modal-icon').textContent = p.icon;
+      document.getElementById('modal-provider-name').textContent = p.name;
+      document.getElementById('modal-icon-2').textContent = p.icon;
+      document.getElementById('modal-title-2').textContent = p.name;
+      document.getElementById('modal-meta').textContent = p.category + ' · ' + p.coverage;
+      document.getElementById('modal-overlay').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.add('hidden');
+    }
+
+    function sendIntro() {
+      const name = document.getElementById('modal-title-2').textContent;
+      closeModal();
+      // Show a success toast
+      const toast = document.createElement('div');
+      toast.className = 'fixed bottom-6 right-6 z-50 bg-green-800 text-white text-sm font-semibold px-5 py-4 rounded-xl shadow-xl flex items-center gap-3 animate-pulse';
+      toast.innerHTML = '<span class="text-xl">✅</span> Introduction request sent to ' + name + '!';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 4000);
+    }
+
+    function filterCategory(cat) {
+      // Update tab styles
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('tab-' + cat).classList.add('active');
+
+      const cards = document.querySelectorAll('#providers-grid [data-category]');
+      let visible = 0;
+      cards.forEach(card => {
+        if (cat === 'all' || card.dataset.category === cat) {
+          card.style.display = '';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      document.querySelector('#results-count span').textContent = visible;
+    }
+
+    // Close modal on overlay click
+    document.getElementById('modal-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HomePath IE — AE Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .intro-row { transition: opacity 0.25s ease, background-color 0.25s ease; }
+    .intro-row.sent { opacity: 0.45; }
+    .mark-btn {
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .sidebar-link { transition: background-color 0.15s; }
+    .sidebar-link.active { background-color: #166534; }
+    .sidebar-link:not(.active):hover { background-color: rgba(255,255,255,0.08); }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex">
+
+  <!-- DARK SIDEBAR -->
+  <aside class="w-64 shrink-0 bg-slate-900 flex flex-col min-h-screen">
+    <!-- Logo -->
+    <div class="px-6 py-6 border-b border-slate-700">
+      <span class="text-lg font-bold text-white tracking-tight">HomePath IE 🏠</span>
+      <p class="text-xs text-slate-400 mt-0.5 font-medium tracking-wide uppercase">Account Executive Portal</p>
+    </div>
+
+    <!-- Nav -->
+    <nav class="flex-1 px-3 py-5 space-y-0.5">
+      <a href="#" class="sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white">
+        <svg class="w-4 h-4 opacity-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        Overview
+      </a>
+      <a href="#" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        My Buyers
+      </a>
+      <a href="#" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+        </svg>
+        Introductions
+      </a>
+    </nav>
+
+    <!-- User -->
+    <div class="px-5 py-5 border-t border-slate-700">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-green-700 flex items-center justify-center text-white text-xs font-bold">S</div>
+          <div>
+            <p class="text-xs font-semibold text-white">Sarah Murphy</p>
+            <p class="text-xs text-slate-400">Account Executive</p>
+          </div>
+        </div>
+        <button class="text-slate-500 hover:text-slate-300 transition-colors" title="Sign out">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 px-8 py-8 overflow-y-auto">
+
+    <!-- Header -->
+    <div class="flex items-start justify-between mb-8">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">AE Dashboard</h1>
+        <p class="text-sm text-slate-500 mt-1">Welcome back, Sarah.</p>
+      </div>
+      <span class="text-xs text-slate-400 mt-1">8 May 2026</span>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="grid grid-cols-3 gap-4 mb-8">
+      <!-- Assigned buyers -->
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-5">
+        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Assigned Buyers</p>
+        <p class="text-4xl font-bold text-slate-900">4</p>
+        <p class="text-xs text-slate-500 mt-1.5">Active buyers on your book</p>
+      </div>
+      <!-- Pending introductions -->
+      <div class="bg-amber-50 rounded-xl border border-amber-200 shadow-sm p-5">
+        <p class="text-xs font-semibold text-amber-600 uppercase tracking-wide mb-2">Pending Introductions</p>
+        <p class="text-4xl font-bold text-amber-700">2</p>
+        <p class="text-xs text-amber-600 mt-1.5">Require your action today</p>
+      </div>
+      <!-- Completion -->
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-5">
+        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Completions</p>
+        <p class="text-4xl font-bold text-green-700">1</p>
+        <p class="text-xs text-slate-500 mt-1.5">This calendar year</p>
+      </div>
+    </div>
+
+    <!-- Pending Introductions -->
+    <div class="bg-amber-50 border border-amber-200 rounded-xl shadow-sm mb-6 overflow-hidden">
+      <div class="px-6 py-4 border-b border-amber-200">
+        <h2 class="text-sm font-bold text-amber-700">Pending introductions to action</h2>
+        <p class="text-xs text-amber-600 mt-0.5">Mark each introduction as sent once you have made contact.</p>
+      </div>
+
+      <!-- Row 1 -->
+      <div id="intro-1" class="intro-row flex items-center justify-between px-6 py-4 border-b border-amber-100 bg-white">
+        <div class="flex items-center gap-4">
+          <div class="w-9 h-9 rounded-full bg-green-100 flex items-center justify-center text-green-800 text-xs font-bold shrink-0">C</div>
+          <div>
+            <p class="text-sm font-semibold text-slate-800">Ciarán O'Brien <span class="text-slate-400 font-normal mx-1">→</span> Doddl Mortgages</p>
+            <p class="text-xs text-slate-400 mt-0.5">Requested 8 May 2026</p>
+          </div>
+        </div>
+        <button
+          class="mark-btn px-4 py-1.5 text-xs font-semibold text-white bg-amber-500 hover:bg-amber-600 rounded-lg"
+          onclick="markSent('intro-1', this)"
+        >
+          Mark as sent
+        </button>
+      </div>
+
+      <!-- Row 2 -->
+      <div id="intro-2" class="intro-row flex items-center justify-between px-6 py-4 bg-white">
+        <div class="flex items-center gap-4">
+          <div class="w-9 h-9 rounded-full bg-violet-100 flex items-center justify-center text-violet-700 text-xs font-bold shrink-0">A</div>
+          <div>
+            <p class="text-sm font-semibold text-slate-800">Aoife Ryan <span class="text-slate-400 font-normal mx-1">→</span> McCann FitzGerald Solicitors</p>
+            <p class="text-xs text-slate-400 mt-0.5">Requested 7 May 2026</p>
+          </div>
+        </div>
+        <button
+          class="mark-btn px-4 py-1.5 text-xs font-semibold text-white bg-amber-500 hover:bg-amber-600 rounded-lg"
+          onclick="markSent('intro-2', this)"
+        >
+          Mark as sent
+        </button>
+      </div>
+    </div>
+
+    <!-- Your Buyers -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100">
+        <h2 class="text-sm font-bold text-slate-800">Your buyers</h2>
+        <a href="#" class="text-xs text-green-700 font-semibold hover:underline">View all →</a>
+      </div>
+
+      <!-- Table Header -->
+      <div class="grid grid-cols-12 gap-4 px-6 py-2.5 bg-slate-50 border-b border-slate-100 text-xs font-semibold text-slate-400 uppercase tracking-wide">
+        <div class="col-span-4">Buyer</div>
+        <div class="col-span-2">Progress</div>
+        <div class="col-span-3">Status</div>
+        <div class="col-span-3 text-right">Action</div>
+      </div>
+
+      <!-- Row 1: Ciarán -->
+      <div class="grid grid-cols-12 gap-4 items-center px-6 py-4 border-b border-slate-100 hover:bg-slate-50 transition-colors">
+        <div class="col-span-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-green-100 flex items-center justify-center text-green-800 text-xs font-bold shrink-0">C</div>
+          <div>
+            <p class="text-sm font-semibold text-slate-800">Ciarán O'Brien</p>
+            <p class="text-xs text-slate-400">ciaran@example.ie</p>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <div class="flex items-center gap-2">
+            <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-green-600 rounded-full" style="width: 28%"></div>
+            </div>
+            <span class="text-xs text-slate-500 font-medium shrink-0">28%</span>
+          </div>
+        </div>
+        <div class="col-span-3">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700">
+            2 pending intros
+          </span>
+        </div>
+        <div class="col-span-3 text-right">
+          <a href="#" class="text-xs text-green-700 font-semibold hover:underline">View →</a>
+        </div>
+      </div>
+
+      <!-- Row 2: Aoife -->
+      <div class="grid grid-cols-12 gap-4 items-center px-6 py-4 border-b border-slate-100 hover:bg-slate-50 transition-colors">
+        <div class="col-span-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-violet-100 flex items-center justify-center text-violet-700 text-xs font-bold shrink-0">A</div>
+          <div>
+            <p class="text-sm font-semibold text-slate-800">Aoife Ryan</p>
+            <p class="text-xs text-slate-400">aoife@example.ie</p>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <div class="flex items-center gap-2">
+            <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-green-600 rounded-full" style="width: 65%"></div>
+            </div>
+            <span class="text-xs text-slate-500 font-medium shrink-0">65%</span>
+          </div>
+        </div>
+        <div class="col-span-3">
+          <!-- no badge -->
+        </div>
+        <div class="col-span-3 text-right">
+          <a href="#" class="text-xs text-green-700 font-semibold hover:underline">View →</a>
+        </div>
+      </div>
+
+      <!-- Row 3: Declan -->
+      <div class="grid grid-cols-12 gap-4 items-center px-6 py-4 border-b border-slate-100 hover:bg-slate-50 transition-colors">
+        <div class="col-span-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 text-xs font-bold shrink-0">D</div>
+          <div>
+            <p class="text-sm font-semibold text-slate-800">Declan Murphy</p>
+            <p class="text-xs text-slate-400">declan@example.ie</p>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <div class="flex items-center gap-2">
+            <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-green-600 rounded-full" style="width: 12%"></div>
+            </div>
+            <span class="text-xs text-slate-500 font-medium shrink-0">12%</span>
+          </div>
+        </div>
+        <div class="col-span-3">
+          <!-- no badge -->
+        </div>
+        <div class="col-span-3 text-right">
+          <a href="#" class="text-xs text-green-700 font-semibold hover:underline">View →</a>
+        </div>
+      </div>
+
+      <!-- Row 4: Sinéad -->
+      <div class="grid grid-cols-12 gap-4 items-center px-6 py-4 hover:bg-slate-50 transition-colors">
+        <div class="col-span-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-rose-100 flex items-center justify-center text-rose-600 text-xs font-bold shrink-0">S</div>
+          <div>
+            <p class="text-sm font-semibold text-slate-800">Sinéad Walsh</p>
+            <p class="text-xs text-slate-400">sinead@example.ie</p>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <div class="flex items-center gap-2">
+            <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-green-600 rounded-full" style="width: 0%"></div>
+            </div>
+            <span class="text-xs text-slate-500 font-medium shrink-0">0%</span>
+          </div>
+        </div>
+        <div class="col-span-3">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-500">
+            onboarding
+          </span>
+        </div>
+        <div class="col-span-3 text-right">
+          <a href="#" class="text-xs text-green-700 font-semibold hover:underline">View →</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function markSent(rowId, btn) {
+      const row = document.getElementById(rowId);
+      row.classList.add('sent');
+      btn.textContent = 'Sent ✓';
+      btn.classList.remove('bg-amber-500', 'hover:bg-amber-600', 'text-white');
+      btn.classList.add('bg-slate-100', 'text-slate-400', 'cursor-default');
+      btn.disabled = true;
+    }
+  </script>
+</body>
+</html>
