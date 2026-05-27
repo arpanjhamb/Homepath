@@ -30,7 +30,6 @@ export async function POST(req: NextRequest) {
 
     await prisma.checklistItem.createMany({
       data: checklistItems.map((item) => ({ ...item, buyerProfileId: profile.id })),
-      skipDuplicates: true,
     })
 
     return NextResponse.json({ success: true })
