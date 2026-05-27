@@ -30,8 +30,14 @@ export default function RegisterPage() {
     })
     const json = await res.json()
     if (!res.ok) { setError(json.error || "Registration failed"); return }
-    await signIn("credentials", { email: data.email, password: data.password, redirect: false })
+    const signInResult = await signIn("credentials", { email: data.email, password: data.password, redirect: false })
+    console.log('signInResult ', signInResult);
+    if (signInResult?.error) {
+      setError("Account created, but automatic sign-in failed. Please sign in from the login page.")
+      return
+    }
     router.push("/onboarding")
+    router.refresh()
   }
 
   return (
