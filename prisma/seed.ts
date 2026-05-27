@@ -52,9 +52,9 @@ async function main() {
 
   for (const p of providers) {
     await prisma.provider.upsert({
-      where: { id: p.name.toLowerCase().replace(/\s+/g, "-") },
+      where: { name: p.name },
       update: {},
-      create: { id: p.name.toLowerCase().replace(/\s+/g, "-"), ...p },
+      create: p,
     });
   }
 
